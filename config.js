@@ -3,5 +3,5 @@
 const CONFIG = {
   SUPABASE_URL: 'https://boivrofpnutfztpbumfs.supabase.co',
   SUPABASE_ANON_KEY: 'sb_publishable_zbeXqawBl2s9HV-CTAxpiQ_TbVK68wh',
-  SITE_URL: '' // optional, e.g. 'https://myschool.pages.dev'. Blank = use the address the app is opened from.
+  SITE_URL: '' https://19aade98.driving-school-booking.pages.dev/'. Blank = use the address the app is opened from.
 };
