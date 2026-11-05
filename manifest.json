@@ -1,13 +1,18 @@
 {
-  "name": "Driving School",
+  "name": "Driving School Bookings",
   "short_name": "Lessons",
+  "description": "Today's lessons, pickups, bookings and payments for your driving school.",
+  "id": "/",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
-  "background_color": "#f4f6f8",
+  "orientation": "portrait",
+  "background_color": "#f5f7fa",
   "theme_color": "#0a6cff",
+  "categories": ["business", "productivity"],
   "icons": [
-    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
-    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
   ]
 }
