@@ -1,7 +1,8 @@
-// Caches static assets only (js/css/json/images + the pinned supabase-js file).
-// HTML and every API call go straight to the network: Cloudflare Pages redirects /x.html -> /x,
-// and a cached redirect breaks page navigations. Bump V after a deploy that changes assets.
-const V = 'ds-v1';
+// Caches static files only (js/css/json/images + the pinned supabase-js file). HTML and API calls are never cached:
+// Cloudflare Pages redirects /x.html -> /x, and a cached redirect breaks page loads.
+// Own files: network-first (a deploy is picked up immediately; cache is the offline/slow-network fallback).
+// Pinned CDN file: cache-first (its URL never changes). Bump V when the file list changes.
+const V = 'ds-v2';
 const FILES = ['styles.css', 'lib.js', 'app.js', 'book.js', 'config.js', 'manifest.json', 'icon-192.png', 'icon-512.png'];
 
 self.addEventListener('install', e => {
@@ -13,11 +14,18 @@ self.addEventListener('activate', e => {
 self.addEventListener('fetch', e => {
   const r = e.request, u = new URL(r.url);
   const cdn = u.hostname === 'cdn.jsdelivr.net';
-  if (r.method !== 'GET' || !(cdn || (u.origin === location.origin && /\.(js|css|json|png|svg)$/.test(u.pathname)))) return;
-  // stale-while-revalidate
+  const own = u.origin === location.origin && /\.(js|css|json|png|svg)$/.test(u.pathname);
+  if (r.method !== 'GET' || !(cdn || own)) return;
   e.respondWith(caches.open(V).then(async c => {
     const hit = await c.match(r);
-    const net = fetch(r).then(res => { if (res.ok || res.type === 'opaque') c.put(r, res.clone()); return res; }).catch(() => hit);
-    return hit || net;
+    if (cdn && hit) return hit;
+    try {
+      const res = await fetch(r);
+      if (res.ok || res.type === 'opaque') c.put(r, res.clone());
+      return res;
+    } catch (err) {
+      if (hit) return hit;
+      throw err;
+    }
   }));
 });

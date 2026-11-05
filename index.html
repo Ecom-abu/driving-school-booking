@@ -3,21 +3,21 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Driving School</title>
+<title>Driving School · Staff</title>
 <meta name="theme-color" content="#0a6cff">
 <link rel="manifest" href="manifest.json">
 <link rel="icon" href="icon-192.png">
 <link rel="apple-touch-icon" href="icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<main id="app"><p class="muted">Loading…</p></main>
-<nav hidden>
-  <a href="#today">Today</a>
-  <a href="#tomorrow">Tomorrow</a>
-  <a href="#students">Students</a>
-  <a href="#settings">Settings</a>
-</nav>
+<main id="app"><div class="skel"></div><div class="skel"></div></main>
+<button id="fab" class="fab" aria-label="Book a lesson" hidden><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button>
+<nav id="tabs" class="tabs" hidden></nav>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
 <script src="config.js"></script>
 <script src="lib.js"></script>
