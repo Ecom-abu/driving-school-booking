@@ -308,7 +308,10 @@ async function settings() {
     { n: 'role', l: 'Role', t: 'select', o: [['instructor', 'Instructor'], ['owner', 'Owner']] }, ACTIVE];
   const SCHOOL = [
     { n: 'name', l: 'School name', req: 1 }, { n: 'whatsapp', l: 'WhatsApp number', t: 'tel' },
-    { n: 'lesson_minutes', l: 'Booking slot length (minutes)', t: 'number', req: 1 },
+    { n: 'lesson_minutes', l: 'Default lesson length for packages (minutes)', t: 'number', req: 1 },
+    { n: 'slot_interval_minutes', l: 'Start times every (minutes)', t: 'select', o: [['30', '30 min'], ['15', '15 min'], ['60', '60 min']] },
+    { n: 'buffer_minutes', l: 'Travel buffer between lessons (minutes)', t: 'number' },
+    { n: 'min_notice_hours', l: 'Minimum notice for online booking (hours)', t: 'number' },
     { n: 'eft_details', l: 'EFT details (shown after booking)', t: 'textarea', p: 'Bank, account no., branch code' },
     { n: 'card_link', l: 'Card payment link (https://…)', t: 'url' }];
   const LT = [{ n: 'name', l: 'Name', req: 1 }, { n: 'minutes', l: 'Minutes', t: 'number', req: 1 },
