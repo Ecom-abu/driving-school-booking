@@ -5,5 +5,5 @@ const CONFIG = {
   SUPABASE_ANON_KEY: 'sb_publishable_zbeXqawBl2s9HV-CTAxpiQ_TbVK68wh',
   // Optional public address used in WhatsApp links, e.g. 'https://driving-school-booking.pages.dev'.
   // Blank = the address the app is opened from. Avoid per-deploy preview URLs like https://19aade98.….pages.dev
-  SITE_URL: ''
+  SITE_URL: 'https://042a69d6.driving-school-booking.pages.dev/'
 };
